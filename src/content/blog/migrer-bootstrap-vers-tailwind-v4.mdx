@@ -1,0 +1,80 @@
+{/*
+  BROUILLON — premier jet proposé comme exemple et comme modèle d'article.
+  Relis-le, réécris-le avec tes propres mots, puis passe `draft` à false pour le publier.
+  Tant que draft: true, l'article n'apparaît qu'en développement (npm run dev).
+*/}
+
+export const metadata = {
+  title: "Migrer mon portfolio de Bootstrap vers Tailwind CSS v4",
+  description: "Retour d'expérience sur la migration de mon portfolio : cohabitation avec Bootstrap, animations et trois pièges de Tailwind v4.",
+  date: "2026-09-26",
+  tags: ["Tailwind CSS", "Next.js", "CSS"],
+  draft: true,
+}
+
+La première version de mon portfolio était un site HTML/CSS avec Bootstrap. Pour la v2,
+je l'ai reconstruite avec **Next.js** et **Tailwind CSS v4**. Voici comment s'est passée
+la migration, et les trois pièges qui m'ont fait perdre le plus de temps.
+
+## Faire cohabiter Bootstrap et Tailwind pendant la migration
+
+Je ne voulais pas tout réécrire d'un coup. Pendant la transition, les deux frameworks
+devaient donc cohabiter sans que Bootstrap écrase mes nouvelles classes Tailwind.
+La solution : les **cascade layers** CSS.
+
+```css
+/* L'ordre est déclaré AVANT tout @import : "bootstrap" a la priorité la plus faible */
+@layer bootstrap, theme, base, components, utilities;
+
+@import "tailwindcss";
+@import "bootstrap/dist/css/bootstrap.min.css" layer(bootstrap);
+```
+
+N'importe quelle classe Tailwind l'emporte alors sur Bootstrap, sans `!important`.
+J'ai pu migrer composant par composant, puis supprimer Bootstrap à la fin.
+
+## Piège n°1 : `translate` n'est plus `transform`
+
+En Tailwind v4, `-translate-x-1/2` ne génère plus `transform: translateX(-50%)` mais la
+propriété CSS **`translate`**. Si une animation `@keyframes` modifie `transform`, les deux
+se **cumulent** au lieu de s'écraser.
+
+C'est un piège… qui devient un avantage : on peut centrer un élément avec `translate` et
+l'animer avec `transform`, sans conflit.
+
+```css
+@keyframes scroll-bounce {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(10px); } /* le centrage via `translate` est conservé */
+}
+```
+
+## Piège n°2 : l'ordre des classes d'animation
+
+Écrire `animate-fade-in [animation-delay:0.6s]` semble logique, mais rien ne garantit que
+le délai soit appliqué **après** le raccourci `animation`, qui le réinitialise.
+Le plus fiable est d'inclure le délai directement dans la valeur :
+
+```html
+<p class="animate-[hero-fade-in_1.5s_var(--ease-in-out)_0.6s_both]">…</p>
+```
+
+## Piège n°3 : ce que Bootstrap faisait « en cachette »
+
+En retirant Bootstrap, certains titres sont devenus plus espacés. La raison :
+son *reboot* imposait `line-height: 1.2` à tous les titres. Tailwind, lui, laisse hériter
+la valeur du `body`. Une règle de base a suffi :
+
+```css
+@layer base {
+  h1, h2, h3, h4, h5, h6 { line-height: 1.2; }
+}
+```
+
+## Ce que je retiens
+
+- Migrer **progressivement**, grâce aux layers, évite de tout casser d'un coup.
+- Comparer visuellement l'ancienne et la nouvelle version, section par section, révèle
+  des différences qu'on ne voit pas en lisant le code.
+- Tailwind v4 déplace la configuration dans le CSS (`@theme`) : couleurs, polices **et**
+  animations au même endroit.

@@ -1,36 +1,67 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Portfolio — Razafindrakoto Zo Nantenaina (v2)
 
-## Getting Started
+Portfolio personnel bilingue (français / anglais) : [zonantenaina.tech](https://www.zonantenaina.tech).
 
-First, run the development server:
+Version 2, reconstruite avec **Next.js 16** (App Router), **React 19**, **TypeScript** et **Tailwind CSS v4**.
+La v1 (HTML / CSS / JS) reste disponible sur [Nate10raz/porteFolio](https://github.com/Nate10raz/porteFolio).
+
+## Fonctionnalités
+
+- Site bilingue : français à la racine (`/`), anglais sous `/en` — sélecteur FR | EN dans la navbar
+- Sections : À propos, Expérience, Parcours, Compétences, Certifications, Projets, Recommandations, Blog, Contact
+  (les sections sans contenu sont masquées automatiquement, la numérotation s'adapte)
+- Page détaillée par projet (`/projets/<slug>`) avec étude de cas, visuels et chiffres clés
+- Filtre des projets par technologie
+- Blog en MDX avec coloration syntaxique (masqué tant qu'aucun article n'est publié)
+- Formulaire de contact (Server Action + [Resend](https://resend.com)) avec protection anti-spam
+- Téléchargement du CV (`/cv`, fichier hébergé sur Cloudinary)
+- SEO : métadonnées par langue, `hreflang`, sitemap, robots.txt, données structurées, image d'aperçu générée
+
+## Démarrer en local
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Puis ouvrir [http://localhost:3000](http://localhost:3000).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Variables d'environnement
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Créer un fichier `.env.local` à la racine (il n'est jamais commité) :
 
-## Learn More
+| Variable | Obligatoire | Rôle |
+|---|---|---|
+| `RESEND_API_KEY` | oui | Clé API Resend pour le formulaire de contact |
+| `RESEND_FROM` | non | Expéditeur, une fois le domaine vérifié chez Resend (ex : `Portfolio <contact@zonantenaina.tech>`). Par défaut : `onboarding@resend.dev` (mode test) |
+| `CONTACT_TO` | non | Adresse de réception des messages (par défaut : l'e-mail défini dans `src/data/site.ts`) |
 
-To learn more about Next.js, take a look at the following resources:
+## Modifier le contenu
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Tout le contenu est dans `src/data/` ; les textes traduits s'écrivent `{ fr: "...", en: "..." }`.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+| Fichier | Contenu |
+|---|---|
+| `src/data/site.ts` | Nom, liens, photo, CV, devise, badge de disponibilité |
+| `src/data/experiences.ts` | Expériences professionnelles |
+| `src/data/education.ts` | Parcours (formation) |
+| `src/data/skills.ts` | Compétences |
+| `src/data/projects.tsx` | Projets (le premier est le « projet phare ») + modèle d'étude de cas |
+| `src/data/certifications.ts` | Certifications et formations |
+| `src/data/recommendations.ts` | Recommandations (avec l'accord des personnes citées) |
+| `src/i18n/dictionaries/` | Textes de l'interface (`fr.ts`, `en.ts`) |
+| `src/content/blog/` | Articles du blog (`.mdx`, `draft: true` = visible seulement en local) |
 
-## Deploy on Vercel
+## Scripts
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+| Commande | Rôle |
+|---|---|
+| `npm run dev` | Serveur de développement |
+| `npm run build` | Build de production |
+| `npm run start` | Lancer le build de production |
+| `npm run lint` | Vérification ESLint |
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Déploiement
+
+Déployé sur [Vercel](https://vercel.com) : chaque push sur `main` déclenche un déploiement.
+Penser à définir `RESEND_API_KEY` dans les variables d'environnement du projet Vercel.

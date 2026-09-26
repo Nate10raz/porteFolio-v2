@@ -1,26 +1,128 @@
+/* L'ordre des layers doit être déclaré tout en haut du fichier, avant
+   n'importe quel @import (règle stricte de la spec CSS). "bootstrap"
+   (qui ne contient plus que les icônes) a la PLUS FAIBLE priorité. */
+@layer bootstrap, theme, base, components, utilities;
+
 @import "tailwindcss";
+@import "bootstrap-icons/font/bootstrap-icons.css" layer(bootstrap);
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+/* Classes `prose` pour la mise en forme des articles du blog (Markdown) */
+@plugin "@tailwindcss/typography";
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
+@theme {
+  /* Dark Forest Color Palette */
+  --color-fog: #cdeeed;
+  --color-mist: #6f9fa5;
+  --color-forest: #2c5d66;
+  --color-deep: #0b3238;
+  --color-abyss: #041416;
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+  /* Additional Colors */
+  --color-accent: #5dd39e;
+  --color-text-light: #e8f4f3;
+  --color-text-muted: #9ab8bd;
+
+  /* Typography */
+  --font-display: "Cinzel", serif;
+  --font-body: "Cormorant Garamond", serif;
+  --font-sans: "Raleway", sans-serif;
+
+  /* Animations — utilisables via animate-<nom> (ex: animate-fog-drift).
+     Pour une variante (durée, délai...), utiliser la valeur arbitraire :
+     animate-[hero-fade-in_1.5s_var(--ease-in-out)_0.6s_both] */
+  --animate-ambient-pulse: ambient-pulse 8s ease-in-out infinite alternate;
+  --animate-fog-drift: fog-drift 30s ease-in-out infinite;
+  --animate-hero-fade-in: hero-fade-in 1.5s var(--ease-in-out) both;
+  --animate-title-slide-in: title-slide-in 1s var(--ease-in-out) both;
+  --animate-scroll-bounce: scroll-bounce 2s infinite;
+  --animate-wheel-scroll: wheel-scroll 1.5s infinite;
+  --animate-timeline-pulse: timeline-pulse 2s ease-out infinite;
+  --animate-dot-blink: dot-blink 1.5s ease-in-out infinite;
+
+  @keyframes ambient-pulse {
+    0% { opacity: 0.5; }
+    100% { opacity: 0.8; }
+  }
+
+  @keyframes fog-drift {
+    0%, 100% { transform: translateX(0); }
+    50% { transform: translateX(15%); }
+  }
+
+  @keyframes hero-fade-in {
+    0% { opacity: 0; transform: translateY(30px); }
+    100% { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes title-slide-in {
+    0% { opacity: 0; transform: translateY(20px); }
+    100% { opacity: 1; transform: translateY(0); }
+  }
+
+  /* N'anime que `transform` : le centrage via -translate-x-1/2 utilise la
+     propriété `translate` (Tailwind v4), les deux se cumulent. */
+  @keyframes scroll-bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(10px); }
+  }
+
+  @keyframes wheel-scroll {
+    0%, 100% { top: 8px; opacity: 1; }
+    50% { top: 20px; opacity: 0.3; }
+  }
+
+  @keyframes timeline-pulse {
+    0% { transform: scale(1); opacity: 0.8; }
+    100% { transform: scale(2); opacity: 0; }
+  }
+
+  @keyframes dot-blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.3; }
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    font-family: var(--font-body);
+    background-color: var(--color-abyss);
+    color: var(--color-text-light);
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  /* Titres plus serrés que le texte courant (comme le faisait Bootstrap) */
+  h1, h2, h3, h4, h5, h6 {
+    line-height: 1.2;
+  }
+
+  /* Blocs de code des articles (générés par rehype-pretty-code) */
+  [data-rehype-pretty-code-figure] pre {
+    padding: 1rem 0;
+    overflow-x: auto;
+  }
+
+  [data-rehype-pretty-code-figure] [data-line] {
+    padding: 0 1.25rem;
+  }
+
+  [data-rehype-pretty-code-figure] code {
+    font-size: 0.85em;
+  }
+
+  /* Réduction de mouvement : coupe toutes les animations/transitions.
+     Les éléments purement décoratifs sont masqués via motion-reduce:hidden. */
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
 }
