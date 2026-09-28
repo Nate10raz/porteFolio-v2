@@ -110,6 +110,7 @@ export const projects: Project[] = [
         },
         tech: ["Next.js", "Supabase", "Tailwind CSS", "Vercel"],
         demoUrl: "https://master-mind-nine.vercel.app",
+        period: { fr: "2026 — en cours", en: "2026 — ongoing" },
         cover: {
             src: "/projects/mastermind/cover.webp",
             alt: {
