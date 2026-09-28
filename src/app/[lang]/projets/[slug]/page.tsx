@@ -206,7 +206,8 @@ export default async function ProjectPage(props: PageProps<'/[lang]/projets/[slu
 
                         {project.gallery && project.gallery.length > 0 && (
                             <Block icon="bi-images" title={p.gallery}>
-                                <div className="grid gap-8 sm:grid-cols-2">
+                                {/* Que des captures mobiles : 3 colonnes sur grand écran ; sinon 2 (les captures web prennent toute la largeur) */}
+                                <div className={`grid gap-8 sm:grid-cols-2 ${project.gallery.every((image) => image.kind === 'mobile') ? 'lg:grid-cols-3' : ''}`}>
                                     {project.gallery.map((image) => (
                                         <Visual key={image.src} image={image} lang={lang}/>
                                     ))}

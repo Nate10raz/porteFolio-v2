@@ -56,9 +56,12 @@ export default function ProjectCard({
                         : 'border-forest bg-linear-135 from-deep/60 to-abyss/80 p-7 group-hover:-translate-y-1 group-hover:shadow-[0_20px_50px_rgba(44,93,102,0.2)] sm:p-8'}
                 `}
             >
-                <div className={`pointer-events-none absolute font-display leading-none font-bold text-forest opacity-30 ${isFeatured ? 'top-4 right-6 text-6xl sm:top-6 sm:right-10 sm:text-[6rem]' : 'top-4 right-5 text-5xl'}`}>
-                    {String(project.id).padStart(2, '0')}
-                </div>
+                {/* Grand numéro décoratif (masqué sur une carte compacte avec image, où il passerait derrière) */}
+                {(isFeatured || !project.cover) && (
+                    <div className={`pointer-events-none absolute font-display leading-none font-bold text-forest opacity-30 ${isFeatured ? 'top-4 right-6 text-6xl sm:top-6 sm:right-10 sm:text-[6rem]' : 'top-4 right-5 text-5xl'}`}>
+                        {String(project.id).padStart(2, '0')}
+                    </div>
+                )}
 
                 <div className={`relative z-2 flex flex-1 flex-col ${isFeatured && project.cover ? 'gap-10 lg:grid lg:grid-cols-[1.2fr_1fr] lg:items-center' : ''}`}>
                     <div className="flex flex-1 flex-col">
@@ -81,7 +84,7 @@ export default function ProjectCard({
                             </Link>
                         )}
 
-                        <h3 className={`mb-2 pr-14 font-display font-bold text-fog ${isFeatured ? 'text-[clamp(1.6rem,3vw,2.2rem)]' : 'text-[1.4rem]'}`}>
+                        <h3 className={`mb-2 font-display ${isFeatured || !project.cover ? 'pr-14' : ''} font-bold text-fog ${isFeatured ? 'text-[clamp(1.6rem,3vw,2.2rem)]' : 'text-[1.4rem]'}`}>
                             {tr(project.title, lang)}
                         </h3>
                         <p className={`font-sans text-[0.85rem] tracking-[1.5px] text-accent uppercase ${isFeatured ? 'mb-6' : 'mb-4'}`}>
@@ -91,7 +94,8 @@ export default function ProjectCard({
                             {tr(project.description, lang)}
                         </p>
 
-                        {project.stats && (
+                        {/* Chiffres clés : seulement sur la carte phare (les cartes compactes restent de hauteur comparable) */}
+                        {isFeatured && project.stats && (
                             <ProjectStats
                                 stats={project.stats.slice(0, 3).map((stat) => ({ value: tr(stat.value, lang), label: tr(stat.label, lang) }))}
                                 className="mb-8"

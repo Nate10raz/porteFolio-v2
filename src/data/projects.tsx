@@ -13,7 +13,7 @@ import type { Localized } from "@/i18n/config";
 // rempli. Remplis-les au fur et à mesure (voir le modèle en bas du fichier).
 
 export type ProjectImage = {
-    src: string;             // URL Cloudinary (res.cloudinary.com/dkddygjxy/...)
+    src: string;             // URL Cloudinary (res.cloudinary.com/dkddygjxy/...) ou fichier de /public (ex: /projects/x/cover.webp)
     alt: Localized;          // description de l'image (accessibilité)
     caption?: Localized;     // légende affichée sous l'image
     kind?: 'web' | 'mobile'; // format : paysage (web) ou portrait (mobile)
@@ -97,6 +97,57 @@ export const projects: Project[] = [
     },
     {
         id: 2,
+        slug: "mastermind",
+        title: "Mastermind",
+        type: { fr: "Projet personnel", en: "Personal Project" },
+        summary: {
+            fr: "Reproduction en ligne du jeu de déduction Mastermind : trois niveaux de difficulté, comptes joueurs, classement et statistiques.",
+            en: "Online remake of the Mastermind deduction game: three difficulty levels, player accounts, leaderboard and statistics.",
+        },
+        description: {
+            fr: "Reproduction du jeu de déduction Mastermind, jouable en ligne : trois niveaux de difficulté (jusqu'à 10 couleurs et 6 positions, avec chronomètre), comptes joueurs, classement général et par niveau avec score pondéré, statistiques et profil.",
+            en: "Remake of the Mastermind deduction game, playable online: three difficulty levels (up to 10 colors and 6 positions, with a timer), player accounts, overall and per-level leaderboards with a weighted score, statistics and profile.",
+        },
+        tech: ["Next.js", "Supabase", "Tailwind CSS", "Vercel"],
+        demoUrl: "https://master-mind-nine.vercel.app",
+        cover: {
+            src: "/projects/mastermind/cover.webp",
+            alt: {
+                fr: "Trois écrans du jeu Mastermind : choix de la difficulté, partie en cours et classement",
+                en: "Three screens of the Mastermind game: difficulty selection, game in progress and leaderboard",
+            },
+        },
+        stats: [
+            { value: "3", label: { fr: "niveaux de difficulté", en: "difficulty levels" } },
+            { value: "4", label: { fr: "classements (général + par niveau)", en: "leaderboards (overall + per level)" } },
+        ],
+        architecture: [
+            { name: { fr: "Interface Next.js", en: "Next.js front end" }, detail: { fr: "Hébergée sur Vercel", en: "Hosted on Vercel" } },
+            { name: "Supabase", detail: { fr: "Scores et niveaux de difficulté", en: "Scores and difficulty levels" } },
+        ],
+        gallery: [
+            {
+                src: "/projects/mastermind/partie.webp",
+                alt: { fr: "Partie en cours avec les indices rouges et blancs", en: "Game in progress with red and white hints" },
+                caption: { fr: "Partie en cours", en: "Game in progress" },
+                kind: "mobile",
+            },
+            {
+                src: "/projects/mastermind/difficulte.webp",
+                alt: { fr: "Choix du niveau : Normal, Difficile, Expert", en: "Level selection: Normal, Hard, Expert" },
+                caption: { fr: "Trois niveaux de difficulté", en: "Three difficulty levels" },
+                kind: "mobile",
+            },
+            {
+                src: "/projects/mastermind/classement.webp",
+                alt: { fr: "Classement des joueurs avec score pondéré", en: "Player leaderboard with weighted score" },
+                caption: { fr: "Classement général et par niveau", en: "Overall and per-level leaderboard" },
+                kind: "mobile",
+            },
+        ],
+    },
+    {
+        id: 3,
         slug: "crypto-web-mobile",
         title: { fr: "Application web et mobile Crypto", en: "Crypto web & mobile application" },
         type: { fr: "Projet Académique", en: "Academic Project" },
@@ -124,7 +175,7 @@ export const projects: Project[] = [
         },
     },
     {
-        id: 3,
+        id: 4,
         slug: "application-crm",
         title: { fr: "Application CRM", en: "CRM Application" },
         type: { fr: "Projet Académique", en: "Academic Project" },

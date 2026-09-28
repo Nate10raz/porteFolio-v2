@@ -63,7 +63,12 @@ export default function ProjectList({ lang, labels }: { lang: Locale; labels: Di
             {others.length > 0 && (
                 <div className="grid gap-8 md:grid-cols-2">
                     {others.map((project, index) => (
-                        <Reveal key={project.id} delay={index * 0.15} className="h-full">
+                        <Reveal
+                            key={project.id}
+                            delay={index * 0.15}
+                            // nombre impair de cartes : la dernière prend toute la largeur (pas de trou)
+                            className={`h-full ${others.length % 2 === 1 && index === others.length - 1 ? 'md:col-span-2' : ''}`}
+                        >
                             <ProjectCard
                                 project={project}
                                 lang={lang}
