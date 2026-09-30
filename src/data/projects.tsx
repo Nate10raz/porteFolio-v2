@@ -149,6 +149,50 @@ export const projects: Project[] = [
     },
     {
         id: 3,
+        slug: "flm-ambatomainty",
+        title: { fr: "Site web de l'église FLM Ambatomainty", en: "FLM Ambatomainty church website" },
+        type: { fr: "Projet personnel — en cours", en: "Personal Project — in progress" },
+        summary: {
+            fr: "Site web de l'église FLM Ambatomainty (Fiangonana Loterana Malagasy), bilingue malgache / français : annonces, événements et présentation de l'église. En cours de développement.",
+            en: "Website for the FLM Ambatomainty church (Malagasy Lutheran Church), bilingual Malagasy / French: announcements, events and church presentation. Currently in development.",
+        },
+        description: {
+            fr: "Site web de l'église FLM Ambatomainty (Fiangonana Loterana Malagasy), bilingue malgache / français, pour publier les annonces et les événements et présenter l'église. En cours de développement : seule la page d'accueil est finalisée.",
+            en: "Website for the FLM Ambatomainty church (Malagasy Lutheran Church), bilingual Malagasy / French, to publish announcements and events and present the church. Currently in development: only the home page is finished.",
+        },
+        tech: ["Next.js", "Tailwind CSS", "Vercel"],
+        demoUrl: "https://flm-ambatomainty.vercel.app",
+        period: { fr: "2026 — en cours", en: "2026 — ongoing" },
+        cover: {
+            src: "/projects/flm-ambatomainty/cover.webp",
+            alt: {
+                fr: "Page d'accueil du site FLM Ambatomainty sur ordinateur et sur mobile",
+                en: "FLM Ambatomainty website home page on desktop and mobile",
+            },
+        },
+        gallery: [
+            {
+                src: "/projects/flm-ambatomainty/accueil-mg.webp",
+                alt: { fr: "Page d'accueil en malgache", en: "Home page in Malagasy" },
+                caption: { fr: "Accueil — version malgache", en: "Home — Malagasy version" },
+                kind: "web",
+            },
+            {
+                src: "/projects/flm-ambatomainty/accueil-fr.webp",
+                alt: { fr: "Page d'accueil en français", en: "Home page in French" },
+                caption: { fr: "Accueil — version française", en: "Home — French version" },
+                kind: "web",
+            },
+            {
+                src: "/projects/flm-ambatomainty/accueil-mobile.webp",
+                alt: { fr: "Page d'accueil sur mobile", en: "Home page on mobile" },
+                caption: { fr: "Accueil sur mobile", en: "Home on mobile" },
+                kind: "mobile",
+            },
+        ],
+    },
+    {
+        id: 4,
         slug: "crypto-web-mobile",
         title: { fr: "Application web et mobile Crypto", en: "Crypto web & mobile application" },
         type: { fr: "Projet Académique", en: "Academic Project" },
@@ -176,7 +220,7 @@ export const projects: Project[] = [
         },
     },
     {
-        id: 4,
+        id: 5,
         slug: "application-crm",
         title: { fr: "Application CRM", en: "CRM Application" },
         type: { fr: "Projet Académique", en: "Academic Project" },

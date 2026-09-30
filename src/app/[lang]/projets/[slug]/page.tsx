@@ -209,7 +209,13 @@ export default async function ProjectPage(props: PageProps<'/[lang]/projets/[slu
                                 {/* Que des captures mobiles : 3 colonnes sur grand écran ; sinon 2 (les captures web prennent toute la largeur) */}
                                 <div className={`grid gap-8 sm:grid-cols-2 ${project.gallery.every((image) => image.kind === 'mobile') ? 'lg:grid-cols-3' : ''}`}>
                                     {project.gallery.map((image) => (
-                                        <Visual key={image.src} image={image} lang={lang}/>
+                                        <Visual
+                                            key={image.src}
+                                            image={image}
+                                            lang={lang}
+                                            // capture mobile seule (nombre impair) : centrée sur toute la ligne, sans vide à côté
+                                            fullRow={image.kind === 'mobile' && project.gallery!.filter((i) => i.kind === 'mobile').length % 2 === 1 && !project.gallery!.every((i) => i.kind === 'mobile')}
+                                        />
                                     ))}
                                 </div>
                             </Block>
@@ -287,10 +293,10 @@ function BulletList({ items }: { items: string[] }) {
 }
 
 // Image cliquable (ouvre la version pleine taille), au format web ou mobile
-function Visual({ image, lang, priority = false }: { image: ProjectImage; lang: Locale; priority?: boolean }) {
+function Visual({ image, lang, priority = false, fullRow = false }: { image: ProjectImage; lang: Locale; priority?: boolean; fullRow?: boolean }) {
     const isMobile = image.kind === 'mobile';
     return (
-        <figure className={isMobile ? 'mx-auto w-full max-w-[280px]' : 'sm:col-span-2'}>
+        <figure className={isMobile ? `mx-auto w-full max-w-[280px] ${fullRow ? 'sm:col-span-2' : ''}` : 'sm:col-span-2'}>
             <a
                 href={image.src}
                 target="_blank"
