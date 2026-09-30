@@ -18,6 +18,7 @@ import { experiences } from "@/data/experiences";
 import { certifications } from "@/data/certifications";
 import { recommendations } from "@/data/recommendations";
 import { getPosts, hasPublishedPosts } from "@/lib/blog";
+import NeuralBackground from "@/components/NeuralBackground";
 import { notFound } from "next/navigation";
 import { hasLocale, localePath, type Locale } from "@/i18n/config";
 import { getDictionary } from "@/i18n/dictionaries";
@@ -70,6 +71,8 @@ export default async function Home(props: PageProps<'/[lang]'>) {
             type="application/ld+json"
             dangerouslySetInnerHTML={{ __html: JSON.stringify(personJsonLd(lang)).replace(/</g, '\\u003c') }}
         />
+        {/* Réseau de neurones animé, fixé derrière toute la page d'accueil (pas sur les pages de détail) */}
+        <NeuralBackground variant="page"/>
         <Hero lang={lang}/>
         {sections.map((section, index) => (
             <Fragment key={section.key}>

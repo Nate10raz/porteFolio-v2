@@ -21,7 +21,7 @@ export default function Hero({ lang }: { lang: Locale }) {
             id="hero"
             className="
                 relative flex min-h-screen items-center justify-center overflow-hidden
-                bg-linear-to-b from-abyss via-deep to-abyss
+                bg-linear-to-b from-abyss/20 via-deep/45 to-abyss/20
                 before:absolute before:inset-0 before:animate-ambient-pulse
                 before:bg-[radial-gradient(ellipse_at_20%_30%,rgba(44,93,102,0.15)_0%,transparent_50%),radial-gradient(ellipse_at_80%_70%,rgba(111,159,165,0.1)_0%,transparent_50%)]
             "
