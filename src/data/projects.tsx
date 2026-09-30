@@ -161,7 +161,8 @@ export const projects: Project[] = [
             en: "Website for the FLM Ambatomainty church (Malagasy Lutheran Church), bilingual Malagasy / French, to publish announcements and events and present the church. Currently in development: only the home page is finished.",
         },
         tech: ["Next.js", "Tailwind CSS", "Vercel"],
-        demoUrl: "https://flm-ambatomainty.vercel.app",
+        // Lien de démo retiré tant que le site n'est pas prêt (seul l'accueil est finalisé) :
+        // demoUrl: "https://flm-ambatomainty.vercel.app",
         period: { fr: "2026 — en cours", en: "2026 — ongoing" },
         cover: {
             src: "/projects/flm-ambatomainty/cover.webp",
