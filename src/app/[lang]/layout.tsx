@@ -46,8 +46,8 @@ export async function generateMetadata(props: LayoutProps<'/[lang]'>): Promise<M
     title,
     description,
     keywords: lang === 'fr'
-        ? ["développeur informatique", "Madagascar", "Java", "Spring Boot", "Flutter", "C#", "portfolio", "IT University", "développement web", "développement mobile"]
-        : ["software developer", "Madagascar", "Java", "Spring Boot", "Flutter", "C#", "portfolio", "IT University", "web development", "mobile development"],
+        ? ["développeur informatique", "Madagascar", "Java", "Spring Boot", "Flutter", "C#", "portfolio", "IT University", "ESTIA", "eBIHAR", "Big Data", "intelligence artificielle", "développement web", "développement mobile"]
+        : ["software developer", "Madagascar", "Java", "Spring Boot", "Flutter", "C#", "portfolio", "IT University", "ESTIA", "eBIHAR", "Big Data", "artificial intelligence", "web development", "mobile development"],
     authors: [{ name: site.name, url: site.url }],
     alternates: alternatesFor(lang),
     openGraph: {

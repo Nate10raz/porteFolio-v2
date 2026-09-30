@@ -16,7 +16,7 @@ export const fr = {
     },
     hero: {
         role: "Développeur Informatique",
-        line1: "Étudiant en Master 1 Informatique à IT University Madagascar",
+        line1: "Étudiant en Master 2 Big Data & Intelligence Artificielle — MSc eBIHAR (ESTIA)",
         line2: "Spécialisé en Développement Informatique",
         seeProjects: "Voir mes projets",
         downloadCv: "Télécharger mon CV",
@@ -37,7 +37,7 @@ export const fr = {
     },
     about: {
         paragraphs: [
-            "Je suis passionné par le développement informatique et actuellement étudiant en Master 1 à IT University Madagascar, spécialisé en développement. J'aime transformer des idées en applications concrètes et fonctionnelles, et voir un projet prendre vie ligne après ligne.",
+            "Je suis passionné par le développement informatique et actuellement étudiant en Master 2 Big Data & Intelligence Artificielle (MSc eBIHAR de l'ESTIA), après un Master 1 Informatique à IT University Madagascar. J'aime transformer des idées en applications concrètes et fonctionnelles, et voir un projet prendre vie ligne après ligne.",
             "Au fil de mes études et de mes projets personnels et académiques, j'ai développé de solides compétences dans plusieurs technologies modernes. Je suis curieux, autonome et toujours motivé à apprendre de nouvelles choses pour progresser continuellement.",
             "Ce qui me motive le plus, ce n'est pas seulement écrire du code, mais créer des solutions utiles, simples et efficaces, qui répondent à de vrais besoins et offrent une bonne expérience aux utilisateurs.",
         ],
@@ -107,7 +107,7 @@ export const fr = {
         seeAll: "Voir tous les articles",
         readingTime: "min de lecture",
         draft: "Brouillon",
-        authorBio: "Développeur informatique, étudiant en M1 à IT University Madagascar.",
+        authorBio: "Développeur informatique, étudiant en Master 2 Big Data & IA (MSc eBIHAR, ESTIA).",
         availabilityIn: "en",
         contactMe: "Me contacter",
     },

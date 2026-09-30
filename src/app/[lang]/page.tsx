@@ -34,8 +34,10 @@ function personJsonLd(lang: Locale) {
     jobTitle: getDictionary(lang).hero.role,
     email: `mailto:${site.email}`,
     alumniOf: { '@type': 'CollegeOrUniversity', name: 'IT University Madagascar' },
+    // Établissement actuel : MSc eBIHAR (Big Data & IA), en ligne
+    affiliation: { '@type': 'CollegeOrUniversity', name: 'ESTIA — École Supérieure des Technologies Industrielles Avancées', url: 'https://www.estia.fr' },
     address: { '@type': 'PostalAddress', addressCountry: 'MG' },
-    knowsAbout: ['Java', 'Spring Boot', 'Flutter', 'C#', 'ASP.NET Core', 'PostgreSQL', 'Docker'],
+    knowsAbout: ['Java', 'Spring Boot', 'Flutter', 'C#', 'ASP.NET Core', 'PostgreSQL', 'Docker', 'Next.js', 'Big Data', 'Machine Learning'],
     sameAs: [site.linkedin, site.github],
   };
 }

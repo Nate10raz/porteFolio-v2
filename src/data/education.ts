@@ -66,14 +66,35 @@ export const education: EducationItem[] = [
     },
     {
         id: 4,
-        year: { fr: "2025 — ACTUEL", en: "2025 — PRESENT" },
-        icon: "bi-star-fill",
+        year: "2025 — 2026",
+        icon: "bi-mortarboard-fill",
         title: { fr: "Master 1 Informatique", en: "Master's in Computer Science (1st year)" },
         subtitleIcon: "bi-building",
         subtitle: "IT University Madagascar",
         description: {
             fr: "Approfondissement des connaissances en développement logiciel avancé, architecture système, et gestion de projets informatiques complexes.",
-            en: "Deepening my knowledge of advanced software development, system architecture, and management of complex IT projects.",
+            en: "Deepened my knowledge of advanced software development, system architecture, and management of complex IT projects.",
+        },
+        badge: { fr: "Formation", en: "Education" },
+        badgeType: "academic",
+        current: false,
+    },
+    {
+        id: 5,
+        year: { fr: "2026 — ACTUEL", en: "2026 — PRESENT" },
+        icon: "bi-star-fill",
+        title: {
+            fr: "Master 2 — MSc eBIHAR Big Data & IA",
+            en: "Master's (2nd year) — MSc eBIHAR Big Data & AI",
+        },
+        subtitleIcon: "bi-building",
+        subtitle: {
+            fr: "ESTIA — École Supérieure des Technologies Industrielles Avancées (en ligne)",
+            en: "ESTIA — École Supérieure des Technologies Industrielles Avancées (online)",
+        },
+        description: {
+            fr: "Master of Science en intelligence artificielle et big data, suivi 100 % en ligne : ingénierie Big Data, IA (Machine Learning, Deep Learning), développement full stack, architectures cloud et cybersécurité.",
+            en: "Master of Science in artificial intelligence and big data, taken 100% online: Big Data engineering, AI (Machine Learning, Deep Learning), full stack development, cloud architectures and cybersecurity.",
         },
         badge: { fr: "En Cours", en: "Ongoing" },
         badgeType: "current",

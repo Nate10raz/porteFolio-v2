@@ -22,6 +22,6 @@ export default function Footer({ lang }: { lang: Locale }) {
                     &copy; {currentYear} {site.name}. {t.footer.rights}
                 </p>
             </div>
-        </footer>
+        </footer> 
     );
 }

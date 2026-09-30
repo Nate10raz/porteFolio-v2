@@ -11,10 +11,10 @@ export const site = {
         en: "Razafindrakoto Zo Nantenaina — Software Developer",
     } as Localized,
     description: {
-        fr: "Portfolio de Razafindrakoto Zo Nantenaina, étudiant en M1 Informatique à IT University Madagascar. " +
-            "Spécialisé en développement web, mobile et logiciel (Java, Spring Boot, Flutter, C#, Docker).",
-        en: "Portfolio of Razafindrakoto Zo Nantenaina, first-year Master's student in Computer Science at IT University Madagascar. " +
-            "Specialized in web, mobile and software development (Java, Spring Boot, Flutter, C#, Docker).",
+        fr: "Portfolio de Razafindrakoto Zo Nantenaina, étudiant en Master 2 Big Data & Intelligence Artificielle (MSc eBIHAR, ESTIA). " +
+            "Développement web, mobile et logiciel (Java, Spring Boot, Flutter, C#, Next.js).",
+        en: "Portfolio of Razafindrakoto Zo Nantenaina, second-year Master's student in Big Data & Artificial Intelligence (MSc eBIHAR, ESTIA). " +
+            "Web, mobile and software development (Java, Spring Boot, Flutter, C#, Next.js).",
     } as Localized,
     email: "razafindrakotozo0@gmail.com",
     linkedin: "https://www.linkedin.com/in/zo-nantenaina-razafindrakoto-9086a7362",

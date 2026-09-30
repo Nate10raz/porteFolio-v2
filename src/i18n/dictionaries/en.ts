@@ -16,7 +16,7 @@ export const en: Dictionary = {
     },
     hero: {
         role: "Software Developer",
-        line1: "Master's student (1st year) in Computer Science at IT University Madagascar",
+        line1: "Master's student (2nd year) in Big Data & Artificial Intelligence — MSc eBIHAR (ESTIA)",
         line2: "Specialized in Software Development",
         seeProjects: "See my projects",
         downloadCv: "Download my resume",
@@ -37,7 +37,7 @@ export const en: Dictionary = {
     },
     about: {
         paragraphs: [
-            "I am passionate about software development and currently a first-year Master's student at IT University Madagascar, specializing in development. I love turning ideas into concrete, working applications, and watching a project come to life line by line.",
+            "I am passionate about software development and currently a second-year Master's student in Big Data & Artificial Intelligence (ESTIA's MSc eBIHAR), after a first-year Master's in Computer Science at IT University Madagascar. I love turning ideas into concrete, working applications, and watching a project come to life line by line.",
             "Through my studies and my personal and academic projects, I have built solid skills in several modern technologies. I am curious, autonomous and always eager to learn new things to keep improving.",
             "What drives me most is not just writing code, but creating useful, simple and effective solutions that meet real needs and give users a great experience.",
         ],
@@ -107,7 +107,7 @@ export const en: Dictionary = {
         seeAll: "See all articles",
         readingTime: "min read",
         draft: "Draft",
-        authorBio: "Software developer, first-year Master's student at IT University Madagascar.",
+        authorBio: "Software developer, second-year Master's student in Big Data & AI (MSc eBIHAR, ESTIA).",
         availabilityIn: "for",
         contactMe: "Contact me",
     },
