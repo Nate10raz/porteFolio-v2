@@ -157,8 +157,8 @@ export const projects: Project[] = [
             en: "Website for the FLM Ambatomainty church (Malagasy Lutheran Church), bilingual Malagasy / French: announcements, events and church presentation. Currently in development.",
         },
         description: {
-            fr: "Site web de l'église FLM Ambatomainty (Fiangonana Loterana Malagasy), bilingue malgache / français, pour publier les annonces et les événements et présenter l'église. En cours de développement : seule la page d'accueil est finalisée.",
-            en: "Website for the FLM Ambatomainty church (Malagasy Lutheran Church), bilingual Malagasy / French, to publish announcements and events and present the church. Currently in development: only the home page is finished.",
+            fr: "Site web de l'église FLM Ambatomainty (Fiangonana Loterana Malagasy), bilingue malgache / français, pour publier les annonces et les événements et présenter l'église. En cours de développement.",
+            en: "Website for the FLM Ambatomainty church (Malagasy Lutheran Church), bilingual Malagasy / French, to publish announcements and events and present the church. Currently in development.",
         },
         tech: ["Next.js", "Tailwind CSS", "Vercel"],
         // Lien de démo retiré tant que le site n'est pas prêt (seul l'accueil est finalisé) :

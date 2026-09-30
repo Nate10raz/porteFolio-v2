@@ -16,6 +16,16 @@ export type Certification = {
 };
 
 export const certifications: Certification[] = [
+    {
+        id: 1,
+        // Attestation de fin de FORMATION (cours), pas la certification officielle
+        // "AWS Certified Cloud Practitioner" (qui passe par un examen).
+        name: "AWS Cloud Practitioner Essentials",
+        issuer: "AWS Training & Certification",
+        date: { fr: "Septembre 2025", en: "September 2025" },
+        kind: "formation",
+        skills: ["AWS", "Cloud computing"],
+    },
     // Exemple :
     // {
     //     id: 1,
