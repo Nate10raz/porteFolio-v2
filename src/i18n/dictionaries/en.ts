@@ -93,6 +93,7 @@ export const en: Dictionary = {
         certification: "Certification",
         formation: "Training",
         verify: "Verify credential",
+        viewDocument: "View document",
         badge: "Badge",
     },
     recommendations: {

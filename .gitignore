@@ -43,3 +43,8 @@ next-env.d.ts
 # IDE
 .idea/
 .vscode/
+
+# Justificatifs d'origine (PDF, PNG...) : jamais publiés.
+# Seules les versions web (.webp, sans métadonnées) sont mises en ligne.
+public/certifications/*
+!public/certifications/*.webp

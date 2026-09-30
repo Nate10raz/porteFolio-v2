@@ -93,6 +93,7 @@ export const fr = {
         certification: "Certification",
         formation: "Formation",
         verify: "Vérifier le certificat",
+        viewDocument: "Voir le justificatif",
         badge: "Badge",
     },
     recommendations: {

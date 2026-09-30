@@ -20,7 +20,30 @@ export default function Certifications({ number, dark, lang }: SectionProps) {
                     <div className="mt-12 grid gap-8 md:grid-cols-2">
                         {certifications.map((certification, index) => (
                             <Reveal key={certification.id} delay={index * 0.1} className="h-full">
-                                <article className="flex h-full gap-5 rounded-[20px] border-2 border-forest bg-deep/40 p-7 transition-all duration-400 hover:-translate-y-1 hover:border-accent hover:shadow-[0_20px_50px_rgba(44,93,102,0.2)]">
+                                <article className="group flex h-full flex-col rounded-[20px] border-2 border-forest bg-deep/40 p-7 transition-all duration-400 hover:-translate-y-1 hover:border-accent hover:shadow-[0_20px_50px_rgba(44,93,102,0.2)]">
+                                    {/* Vignette du justificatif : s'ouvre en grand dans un nouvel onglet */}
+                                    {certification.document && (
+                                        <a
+                                            href={certification.document}
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            aria-label={`${t.certifications.viewDocument} — ${tr(certification.name, lang)}`}
+                                            className="relative mb-6 block aspect-[735/540] overflow-hidden rounded-xl border border-forest bg-white"
+                                        >
+                                            <Image
+                                                src={certification.document}
+                                                alt={`${t.certifications.viewDocument} — ${tr(certification.name, lang)}`}
+                                                fill
+                                                sizes="(min-width: 768px) 450px, 100vw"
+                                                className="object-contain transition-transform duration-500 group-hover:scale-[1.03]"
+                                            />
+                                            <span className="absolute right-3 bottom-3 inline-flex items-center gap-1.5 rounded-full bg-abyss/85 px-3 py-1 font-sans text-[0.75rem] font-semibold text-fog opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+                                                <i className="bi bi-zoom-in text-accent"></i> {t.certifications.viewDocument}
+                                            </span>
+                                        </a>
+                                    )}
+
+                                    <div className="flex flex-1 gap-5">
                                     {certification.badge ? (
                                         <Image
                                             src={certification.badge}
@@ -64,6 +87,7 @@ export default function Certifications({ number, dark, lang }: SectionProps) {
                                                 <i className="bi bi-shield-check"></i> {t.certifications.verify}
                                             </a>
                                         )}
+                                    </div>
                                     </div>
                                 </article>
                             </Reveal>

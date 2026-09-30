@@ -13,6 +13,9 @@ export type Certification = {
     credentialUrl?: string; // lien de vérification (Credly, Coursera...)
     badge?: string;         // image du badge (URL Cloudinary), sinon une icône est affichée
     skills?: Localized[];
+    // Photo du justificatif (attestation, certificat), affichée en vignette cliquable.
+    // Fichier dans /public (ex: "/certifications/aws.webp") ou URL Cloudinary.
+    document?: string;
 };
 
 export const certifications: Certification[] = [
@@ -25,6 +28,7 @@ export const certifications: Certification[] = [
         date: { fr: "Septembre 2025", en: "September 2025" },
         kind: "formation",
         skills: ["AWS", "Cloud computing"],
+        document: "/certifications/aws-cloud-practitioner-essentials.webp",
     },
     // Exemple :
     // {
